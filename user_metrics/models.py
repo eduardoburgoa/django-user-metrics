@@ -8,8 +8,8 @@ from user_metrics.utils import get_quarter_number
 class Metric(models.Model):
     """ holds the types of metrics
     """
-    slug = models.SlugField(unique=True, max_length=100, db_index=True)
     name = models.CharField(max_length=90)
+    slug = models.SlugField(unique=True, max_length=100, db_index=True)
 
     def __unicode__(self): return self.name
 

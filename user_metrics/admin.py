@@ -4,6 +4,10 @@ from user_metrics.models import Metric, MetricItem, MetricDay, MetricWeek, Metri
 from user_metrics.utils import get_quarter_number
 
 
+class MetricAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+
 class MetricItemAdmin(admin.ModelAdmin):
     list_display = ('metric', 'user', 'count', 'date_up')
     list_filter = ('metric', 'user')
@@ -65,7 +69,7 @@ class MetricYearAdmin(admin.ModelAdmin):
     when.admin_order_field = 'date_up'
 
 
-admin.site.register(Metric)
+admin.site.register(Metric, MetricAdmin)
 admin.site.register(MetricItem, MetricItemAdmin)
 admin.site.register(MetricDay, MetricDayAdmin)
 admin.site.register(MetricWeek, MetricWeekAdmin)

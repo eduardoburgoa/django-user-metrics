@@ -1,6 +1,6 @@
 from datetime import date
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 from user_metrics.utils import get_quarter_number
 
@@ -18,7 +18,7 @@ class MetricItem(models.Model):
     """ more atomic representation of a metric by each user
     """
     metric = models.ForeignKey(Metric)
-    user = models.ForeignKey(User, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
 
     count = models.IntegerField(default=1)
     date_up = models.DateField(default=date.today)
@@ -41,7 +41,7 @@ class MetricDay(models.Model):
     """ represent aggregation of metrics daily
     """
     metric = models.ForeignKey(Metric)
-    user = models.ForeignKey(User, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
 
     count = models.IntegerField(default=0)
     date_up = models.DateField(default=date.today)
@@ -63,7 +63,7 @@ class MetricWeek(models.Model):
     """ represent aggregation of metric weekly
     """
     metric = models.ForeignKey(Metric)
-    user = models.ForeignKey(User, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
 
     count = models.IntegerField(default=0)
     date_up = models.DateField(default=date.today)
@@ -86,7 +86,7 @@ class MetricMonth(models.Model):
     """ represent aggregation of metrics monthly
     """
     metric = models.ForeignKey(Metric)
-    user = models.ForeignKey(User, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
 
     count = models.IntegerField(default=0)
     date_up = models.DateField(default=date.today)
@@ -109,7 +109,7 @@ class MetricQuarter(models.Model):
     """ represent aggregation of metrics by quarter
     """
     metric = models.ForeignKey(Metric)
-    user = models.ForeignKey(User, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
 
     count = models.IntegerField(default=0)
     date_up = models.DateField(default=date.today)
@@ -132,7 +132,7 @@ class MetricYear(models.Model):
     """ represent aggregation of metrics by year
     """
     metric = models.ForeignKey(Metric)
-    user = models.ForeignKey(User, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
 
     count = models.IntegerField(default=0)
     date_up = models.DateField(default=date.today)

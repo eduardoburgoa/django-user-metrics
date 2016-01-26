@@ -17,6 +17,8 @@ class MetricDayAdmin(admin.ModelAdmin):
     list_display = ('metric', 'user', 'count', 'when', )
     list_filter = ('metric', 'user', )
 
+    search_fields = ['metric', 'user__username', 'date_up']
+
     def when(self, obj):
         return obj.date_up.strftime("%b. %d, %Y")
     when.short_description = u'When'
@@ -26,6 +28,8 @@ class MetricDayAdmin(admin.ModelAdmin):
 class MetricWeekAdmin(admin.ModelAdmin):
     list_display = ('metric', 'user', 'count', 'when', )
     list_filter = ('metric', 'user', )
+
+    search_fields = ['metric', 'user__username', 'date_up']
 
     def when(self, obj):
         return u"Week %(week)s of year %(year)s" % {
@@ -40,8 +44,11 @@ class MetricMonthAdmin(admin.ModelAdmin):
     list_display = ('metric', 'user', 'count', 'when', )
     list_filter = ('metric', 'user', )
 
+    search_fields = ['metric', 'user__username', 'date_up']
+
     def when(self, obj):
         return obj.date_up.strftime("%B %Y"),
+
     when.short_description = u'When'
     when.admin_order_field = 'date_up'
 
@@ -49,6 +56,9 @@ class MetricMonthAdmin(admin.ModelAdmin):
 class MetricQuarterAdmin(admin.ModelAdmin):
     list_display = ('metric', 'user', 'count', 'when', )
     list_filter = ('metric', 'user', )
+
+    search_fields = ['metric', 'user__username', 'date_up']
+
 
     def when(self, obj):
         return u"Quarter %(quarter)s of %(year)s" % {
@@ -62,6 +72,8 @@ class MetricQuarterAdmin(admin.ModelAdmin):
 class MetricYearAdmin(admin.ModelAdmin):
     list_display = ('metric', 'user', 'count', 'when', )
     list_filter = ('metric', 'user', )
+
+    search_fields = ['metric', 'user__username', 'date_up']
 
     def when(self, obj):
         return obj.date_up.strftime('%Y')

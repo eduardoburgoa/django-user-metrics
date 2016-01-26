@@ -22,3 +22,9 @@ def put_metric(slug, user=None, count=1, **kwargs):
         response = urllib2.urlopen(req)
         if response.read() == '0':
             raise Exception(u'MixPanel returned 0')
+
+
+def set_metric(slug, user=None, count=1, **kwargs):
+    """ Update a metric by a given user """
+    # Unsupported, hence the noop
+    pass

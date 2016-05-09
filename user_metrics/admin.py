@@ -64,7 +64,7 @@ class MonthListFilter(SimpleListFilter):
             else:
                 next_month = 1
                 next_year = year + 1
-            return queryset.filter(date_up__gte=date(int(year), int(month), 1), date_up__lt=date(next_year, next_month, 1))
+            return queryset.filter(date_up__gte=date(year, month, 1), date_up__lt=date(next_year, next_month, 1))
         else:
             return queryset
 

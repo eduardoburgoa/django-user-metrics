@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "django-user-metrics",
-    version = "0.1",
+    version = "0.2",
     description = "capture metrics for each user",
     long_description = read('README.rst'),
     url = 'https://github.com/rmaceissoft/django-user-metrics',

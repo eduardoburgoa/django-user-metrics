@@ -71,5 +71,5 @@ def metrics_aggregate_by_user():
         metric_year.count = metric_year.count + item.count
         metric_year.save()
 
-    # remove all metric items
-    items.delete()
+        item.delete()
+
